@@ -1,0 +1,10 @@
+services:
+  logstash:
+    build:
+      context: ..
+      dockerfile: .ci/Dockerfile
+      args:
+        LOGSTASH_VERSION: ${LOGSTASH_VERSION:-8.17.0}
+    environment:
+      - LOGSTASH_SOURCE=1
+      - LOGSTASH_PATH=/usr/share/logstash
