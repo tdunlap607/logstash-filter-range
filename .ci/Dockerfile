@@ -10,7 +10,7 @@ COPY --chown=logstash:logstash . /usr/share/plugins/plugin
 WORKDIR /usr/share/plugins/plugin
 
 # Install bundler and dependencies
-RUN /usr/share/logstash/bin/ruby -S gem install bundler && \
+RUN /usr/share/logstash/bin/ruby -S gem install bundler -v 2.3.27 && \
     /usr/share/logstash/bin/ruby -S bundle install
 
 # Run tests
