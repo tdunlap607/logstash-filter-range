@@ -9,8 +9,9 @@ COPY --chown=logstash:logstash . /usr/share/plugins/plugin
 
 WORKDIR /usr/share/plugins/plugin
 
-# Install dependencies using Logstash's bundler
-RUN /usr/share/logstash/bin/ruby -S bundle install
+# Install bundler and dependencies
+RUN /usr/share/logstash/bin/ruby -S gem install bundler && \
+    /usr/share/logstash/bin/ruby -S bundle install
 
 # Run tests
 CMD ["/usr/share/logstash/bin/ruby", "-S", "bundle", "exec", "rake", "test"]
